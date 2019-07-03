@@ -1,5 +1,7 @@
 package com.qa.FreeCrmPro.TestCases;
 
+import java.io.IOException;
+
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -42,7 +44,6 @@ public class LoginPageTest extends TestBase {
 	@Test(priority=3)
 	public void loginTest()
 	{
-		//homepage = loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 		
 		logger = report.createTest("Login to CRM");
 		logger.info("Starting Application");
@@ -54,8 +55,7 @@ public class LoginPageTest extends TestBase {
 	@AfterMethod
 	public void tearDown(ITestResult results)
 	{
-		if(results.getStatus()==ITestResult.SUCCESS)
-			TestUtil.captureScreenShots(driver);
+		
 		report.flush();
 		
 		driver.quit();
